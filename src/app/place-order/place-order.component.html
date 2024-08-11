@@ -1,0 +1,17 @@
+<H1>Place Order</H1>
+<form #orderForm="ngForm" (ngSubmit)="onSubmit(orderForm)" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="CName">Customer Name:</label>
+      <input type="text" id="CName" name="CName" ngModel required>
+    </div>
+  
+    <div class="form-group">
+      <label for="OrderImage">Upload Image:</label>
+      <input type="file" id="OrderImage" name="OrderImage" (change)="onFileChange($event)" accept="image/*" ngModel required>
+    </div>
+  
+    <button mat-raised-button color="primary" type="submit" [disabled]="!orderForm.form.valid">Submit Order</button>
+  </form>
+
+  <H3>Get Your Order Status</H3>
+  <a href="/get-order-status">Click Here</a>

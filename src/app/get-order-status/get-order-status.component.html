@@ -1,0 +1,23 @@
+<h1>Get Order Status</h1>
+<form #orderStatusForm="ngForm" (ngSubmit)="onSubmit(orderStatusForm)" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="OrderId">Order Id:</label>
+      <input type="text" id="OrderId" name="OrderId" ngModel required>
+    </div>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="!orderStatusForm.form.valid">Submit Order</button>
+  </form>
+<br>
+<br>
+<br>
+<div *ngIf="isLoading">Loading...</div>
+  <div *ngIf="error">{{ error }}</div>
+  <div *ngIf="!isLoading && order">
+    <h2>Order Details</h2>
+    <p><strong>Order Id:</strong> {{ order.Id }}</p>
+    <p><strong>Delivery Date:</strong> {{ order.DeliveryDate }}</p>
+    <p><strong>Customer Name:</strong> {{order.CustomerName}}</p>
+    <p><strong>Order Date:</strong>{{order.Date}}</p>
+    <p><strong>Image url:</strong> {{ order.ImageUrl}}</p> 
+    <p><strong>Order Status:</strong> {{ order.State}}</p>
+  </div>
